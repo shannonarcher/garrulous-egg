@@ -6,7 +6,9 @@
     "start": "node ./bin/www",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js ./ --fix",
-    "data-generate": "node ./data/workers/01_filter-words.js"
+    "data-generate": "node ./data/workers/01_filter-words.js",
+    "data-generate:1": "node ./data/workers/01_filter-words.js",
+    "data-generate:2": "node ./data/workers/02_create-levels.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

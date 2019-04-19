@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const settings = require('../settings.json');
 
-const readStaticList = (filename) => fs.readFileSync(path.join(__dirname, '..', 'static', filename), 'utf8').split('\n');
+const readStaticList = filename => fs.readFileSync(path.join(__dirname, '..', 'static', filename), 'utf8').split('\n');
 
 const words = readStaticList('raw-wordlist.txt');
 
@@ -38,7 +38,9 @@ const filteredByTopX = filteredByLists.slice(0, maxWords);
 
 fs.writeFile(path.join(__dirname, '..', 'output', 'wordlist.txt'), filteredByTopX.join('\n'), (err) => {
   if (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
+  // eslint-disable-next-line no-console
   console.log('The file saved successfully.');
 });

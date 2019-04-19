@@ -1,0 +1,9 @@
+{
+  "min": 3,
+  "max": 7,
+  "difficulties": {
+    "easy": 5,
+    "medium": 6,
+    "hard": 7
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "garrulous-egg",
+  "version": "1.0.0",
+  "description": "A Word Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shannonarcher/garrulous-egg.git"
+  },
+  "keywords": [
+    "word",
+    "game"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shannonarcher/garrulous-egg/issues"
+  },
+  "homepage": "https://github.com/shannonarcher/garrulous-egg#readme"
+}

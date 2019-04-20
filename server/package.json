@@ -6,17 +6,22 @@
     "start": "node ./bin/www",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js ./ --fix",
-    "data-generate": "node ./data/workers/01_filter-words.js",
-    "data-generate:1": "node ./data/workers/01_filter-words.js",
-    "data-generate:2": "node ./data/workers/02_create-levels.js"
+    "data-generate": "npm run dg:1 && npm run dg:2 && npm run dg:3 && npm run dg:4",
+    "dg:1": "node ./data/workers/01-filter-words.js",
+    "dg:2": "node ./data/workers/02-create-levels.js",
+    "dg:3": "node ./data/workers/03-grade-levels.js",
+    "dg:4": "node ./data/workers/04-curate-levels.js"
   },
   "dependencies": {
+    "beepbeep": "^1.2.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0"
+    "md5": "^2.2.1",
+    "morgan": "~1.9.0",
+    "shuffle-array": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

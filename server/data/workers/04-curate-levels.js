@@ -41,7 +41,7 @@ const top100WithCurated = top100.map((level) => {
   };
 });
 
-fs.writeFile(path.join(__dirname, '..', 'output', 'starter_levels.json'), JSON.stringify(top100WithCurated, null, 2), (err) => {
+fs.writeFile(path.join(__dirname, '..', 'output', 'starter-levels.json'), JSON.stringify(top100WithCurated, null, 2), (err) => {
   if (err) {
     // eslint-disable-next-line no-console
     console.error(err);

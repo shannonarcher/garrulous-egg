@@ -6,11 +6,12 @@
     "start": "node ./bin/www",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js ./ --fix",
-    "data-generate": "npm run dg:1 && npm run dg:2 && npm run dg:3 && npm run dg:4",
+    "dg:all": "npm run dg:1 && npm run dg:2 && npm run dg:3 && npm run dg:4 && npm run dg:5",
     "dg:1": "node ./data/workers/01-filter-words.js",
     "dg:2": "node ./data/workers/02-create-levels.js",
     "dg:3": "node ./data/workers/03-grade-levels.js",
-    "dg:4": "node ./data/workers/04-curate-levels.js"
+    "dg:4": "node ./data/workers/04-curate-levels.js",
+    "dg:5": "node ./data/workers/05-generate-best-seed.js"
   },
   "dependencies": {
     "beepbeep": "^1.2.2",

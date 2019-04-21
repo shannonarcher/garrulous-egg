@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "lint": "eslint --ext .js ./",
     "lint:fix": "eslint --ext .js ./ --fix",
     "dg:all": "npm run dg:1 && npm run dg:2 && npm run dg:3 && npm run dg:4 && npm run dg:5",
@@ -24,6 +24,7 @@
     "md5": "^2.2.1",
     "mongoose": "^5.5.2",
     "morgan": "~1.9.0",
+    "nodemon": "^1.18.11",
     "seedrandom": "^3.0.1",
     "shuffle-array": "^1.0.1"
   },

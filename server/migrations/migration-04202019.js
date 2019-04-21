@@ -1,28 +1,18 @@
 const mongoose = require('mongoose');
 
-const LevelModel = require('../models/level');
+const db = require('../models/db');
+const Level = require('../models/level');
 const levelData = require('../data/output/seeded-levels.json');
-
-const db = {
-  ip: process.env.GEDB_IP,
-  name: process.env.GEDB_NAME,
-  user: process.env.GEDB_USER,
-  pwd: process.env.GEDB_PWD,
-  port: 27017,
-};
-
 
 /* eslint-disable no-console */
 async function migrate() {
-  await mongoose.connect(`mongodb://${db.user}:${db.pwd}@${db.ip}:${db.port}/${db.name}`, {
-    useNewUrlParser: true,
-  });
+  await db.connect();
   console.log('connection made.');
 
-  const levelCount = await LevelModel.countDocuments();
+  const levelCount = await Level.countDocuments();
 
   if (levelCount === 0) {
-    await LevelModel.deleteMany({});
+    await Level.deleteMany({});
 
     const formattedLevelData = levelData.map(({
       id,
@@ -37,11 +27,11 @@ async function migrate() {
       relatedWords,
       seed,
     }));
-    await LevelModel.insertMany(formattedLevelData);
+    await Level.insertMany(formattedLevelData);
     console.log('levels saved.');
   }
 
-  mongoose.connection.close();
+  db.close();
   console.log('connection closed.');
 };
 

@@ -6,7 +6,7 @@ const shuffle = require('shuffle-array');
 
 const top100 = require('../output/top.json');
 
-const top100WithCurated = top100.map((level) => {
+const top100WithCurated = top100.map((level, index) => {
   const { subwords } = level;
 
   const filteredByLength = subwords.reduce((acc, curr) => ({
@@ -38,6 +38,7 @@ const top100WithCurated = top100.map((level) => {
     subwords: undefined,
     grade: undefined,
     id: md5(level.value),
+    order: index,
   };
 });
 

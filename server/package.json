@@ -11,7 +11,8 @@
     "dg:2": "node ./data/workers/02-create-levels.js",
     "dg:3": "node ./data/workers/03-grade-levels.js",
     "dg:4": "node ./data/workers/04-curate-levels.js",
-    "dg:5": "node ./data/workers/05-generate-best-seed.js"
+    "dg:5": "node ./data/workers/05-generate-best-seed.js",
+    "migrate": ""
   },
   "dependencies": {
     "beepbeep": "^1.2.2",
@@ -21,6 +22,7 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "md5": "^2.2.1",
+    "mongoose": "^5.5.2",
     "morgan": "~1.9.0",
     "seedrandom": "^3.0.1",
     "shuffle-array": "^1.0.1"

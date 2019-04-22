@@ -45,7 +45,7 @@ async function migrate() {
 }
 
 async function rollback(num) {
-  const completedMigrations = await getMigrations();
+  let completedMigrations = await getMigrations();
 
   if (!num) {
     completedMigrations = completedMigrations.slice(-num);

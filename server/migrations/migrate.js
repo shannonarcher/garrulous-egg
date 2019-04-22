@@ -44,17 +44,16 @@ async function migrate() {
   db.close();
 }
 
-async function rollback(num) {
+async function rollback(num = 0) {
   let completedMigrations = await getMigrations();
-
-  if (!num) {
+  if (num) {
     completedMigrations = completedMigrations.slice(-num);
   }
 
   const incompleteMigrations = migrations
     .filter(({ name }) => completedMigrations.find(({ name: cName }) => name === cName));
 
-  for (let i = 0; i < incompleteMigrations.length; i += 1) {
+  for (let i = incompleteMigrations.length; i >= 0; i -= 1) {
     // eslint-disable-next-line no-await-in-loop
     await incompleteMigrations[i].migration.down();
     // eslint-disable-next-line no-console
@@ -62,14 +61,24 @@ async function rollback(num) {
   }
 
   await db.connect();
-  await Migration.deleteMany({});
+  if (!num) {
+    await Migration.deleteMany({});
+  } else if (incompleteMigrations.length) {
+    await Migration.deleteMany({
+      created: { $gte: incompleteMigrations[0].created },
+    });
+  }
   db.close();
 }
 
 async function run() {
-  if (argv.rollback) {
-    await rollback();
-    await migrate();
+  if (argv.refresh || argv.rollback !== undefined) {
+    console.log('Rolling back.', argv.rollback || '');
+    await rollback(argv.rollback);
+    if (argv.refresh) {
+      console.log('Migrating.');
+      await migrate();
+    }
   } else {
     await migrate();
   }

@@ -78,7 +78,7 @@ const seeded = StarterLevels.map((level, i) => {
 
   if (maxSeed === null) {
     // eslint-disable-next-line no-console
-    console.log(`Failed to find crossword that contains all words. ${level.id}`)
+    console.log(`Failed to find crossword that contains all words. ${level.id}`);
   }
 
   return {
@@ -94,5 +94,5 @@ fs.writeFile(path.join(__dirname, '..', 'output', 'seeded-levels.json'), JSON.st
     console.error(err);
   }
   // eslint-disable-next-line no-console
-  console.log("The file saved successfully.");
+  console.log('The file saved successfully.');
 });

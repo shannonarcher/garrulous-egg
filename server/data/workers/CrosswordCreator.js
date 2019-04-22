@@ -86,12 +86,12 @@ class Crossword {
           const index = word.indexOf(node);
           if (index > -1) {
             const horizontal = !(
-              this.graph[`${(lower.x + x) - 1},${lower.y + y}`] ||
-              this.graph[`${(lower.x + x) + 1},${lower.y + y}`]
+              this.graph[`${(lower.x + x) - 1},${lower.y + y}`]
+              || this.graph[`${(lower.x + x) + 1},${lower.y + y}`]
             );
             const vertical = !(
-              this.graph[`${lower.x + x},${(lower.y + y) - 1}`] ||
-              this.graph[`${lower.x + x},${(lower.y + y) + 1}`]
+              this.graph[`${lower.x + x},${(lower.y + y) - 1}`]
+              || this.graph[`${lower.x + x},${(lower.y + y) + 1}`]
             );
 
             if (horizontal || vertical) {
@@ -153,10 +153,10 @@ class Crossword {
       const baseY = y + (!horizontal ? i : 0);
 
       if (
-        !(word[i] === this.graph[`${baseX},${baseY}`] &&
-        (
-          (horizontal && !this.graph[`${baseX + 1},${baseY}`]) ||
-          (!horizontal && !this.graph[`${baseX},${baseY + 1}`])
+        !(word[i] === this.graph[`${baseX},${baseY}`]
+        && (
+          (horizontal && !this.graph[`${baseX + 1},${baseY}`])
+          || (!horizontal && !this.graph[`${baseX},${baseY + 1}`])
         ))
       ) {
         const nodes = {

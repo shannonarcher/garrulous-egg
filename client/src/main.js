@@ -4,7 +4,9 @@ import Vuex from 'vuex';
 import App from './App.vue';
 import storeConfig from './store/store';
 
+Vue.use(Vuex);
 const store = new Vuex.Store(storeConfig);
+
 Vue.config.productionTip = false;
 
 new Vue({

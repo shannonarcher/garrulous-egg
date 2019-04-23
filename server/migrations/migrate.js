@@ -26,8 +26,9 @@ async function getMigrations() {
 async function migrate() {
   const completedMigrations = await getMigrations();
 
-  const incompleteMigrations = migrations
-    .filter(({ name }) => !completedMigrations.find(({ name: cName }) => name === cName));
+  const incompleteMigrations = migrations.filter(
+    ({ name }) => !completedMigrations.find(({ name: cName }) => name === cName),
+  );
 
   for (let i = 0; i < incompleteMigrations.length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
@@ -37,10 +38,12 @@ async function migrate() {
   }
 
   await db.connect();
-  await Migration.insertMany(incompleteMigrations.map(({ name }) => ({
-    name,
-    created: Date.now(),
-  })));
+  await Migration.insertMany(
+    incompleteMigrations.map(({ name }) => ({
+      name,
+      created: Date.now(),
+    })),
+  );
   db.close();
 }
 
@@ -50,10 +53,9 @@ async function rollback(num = 0) {
     completedMigrations = completedMigrations.slice(-num);
   }
 
-  const incompleteMigrations = migrations
-    .filter(({ name }) => completedMigrations.find(({ name: cName }) => name === cName));
+  const incompleteMigrations = migrations.filter(({ name }) => completedMigrations.find(({ name: cName }) => name === cName));
 
-  for (let i = incompleteMigrations.length; i >= 0; i -= 1) {
+  for (let i = incompleteMigrations.length - 1; i >= 0; i -= 1) {
     // eslint-disable-next-line no-await-in-loop
     await incompleteMigrations[i].migration.down();
     // eslint-disable-next-line no-console

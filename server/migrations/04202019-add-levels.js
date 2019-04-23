@@ -6,19 +6,18 @@ const levelData = require('../data/output/seeded-levels.json');
 module.exports = {
   async up() {
     await db.connect();
-    const formattedLevelData = levelData.map(({
-      id,
-      value: primaryWord,
-      filtered: targetWords,
-      all: relatedWords,
-      seed,
-    }) => ({
-      id,
-      primaryWord,
-      targetWords,
-      relatedWords,
-      seed,
-    }));
+    const formattedLevelData = levelData.map(
+      ({
+        id, value: primaryWord, filtered: targetWords, all: relatedWords, seed, order,
+      }) => ({
+        id,
+        primaryWord,
+        targetWords,
+        relatedWords,
+        seed,
+        order,
+      }),
+    );
     await Level.insertMany(formattedLevelData);
     db.close();
   },

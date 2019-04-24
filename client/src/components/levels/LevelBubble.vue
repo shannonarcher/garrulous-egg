@@ -3,12 +3,17 @@ export default {
   props: {
     level: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
+  computed: {
+    label() {
+      return this.level.order + 1;
+    }
+  }
 };
 </script>
 
 <template>
-  <div class="level-bubble">{{ level.order }}</div>
+  <div class="level-bubble" @click="$emit('click', level.id)">{{ this.label }}</div>
 </template>

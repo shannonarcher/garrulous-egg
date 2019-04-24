@@ -1,19 +1,11 @@
 <template>
   <div id="app">
-    <Levels/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Levels from './pages/Levels.vue';
-
 export default {
-  name: 'app',
-  components: {
-    Levels,
-  },
+  name: "app"
 };
 </script>
-
-<style lang="scss">
-</style>

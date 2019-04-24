@@ -4,6 +4,7 @@
   "description": "A Word Game",
   "main": "index.js",
   "scripts": {
+    "start": "ttab -G eval 'cd client && npm run serve' && ttab -G eval 'cd server && npm start' && code ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/shannonarcher/garrulous-egg#readme",
   "dependencies": {
     "seedrandom": "^3.0.1"
+  },
+  "devDependencies": {
+    "ttab": "^0.6.1"
   }
 }

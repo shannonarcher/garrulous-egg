@@ -27,7 +27,7 @@ export default {
       commit('setIds', levels);
     },
     async getLevel({ commit, state }, id) {
-      if (state.data[id]) {
+      if (!id || state.data[id]) {
         return;
       }
       const { data: level } = await axios.get(`${levelsApi}/${id}`);

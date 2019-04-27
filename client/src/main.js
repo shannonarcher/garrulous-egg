@@ -18,4 +18,13 @@ new Vue({
   render: h => h(App),
   store,
   router,
+  mounted() {
+    this.$store.subscribeAction({
+      after: (action) => {
+        if (action.type === 'users/login') {
+          this.$router.push({ name: 'levels' });
+        }
+      },
+    });
+  },
 }).$mount('#app');

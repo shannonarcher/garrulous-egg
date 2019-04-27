@@ -17,6 +17,7 @@ export default {
   },
   mutations: {
     setCurrentUser(state, user) {
+      // eslint-disable-next-line no-param-reassign
       state.currentUser = user;
     },
   },

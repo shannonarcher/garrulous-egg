@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/:name', async (req, res) => {
   db.connect();
   const user = await User.findOne({ name: req.params.name });
   db.close();

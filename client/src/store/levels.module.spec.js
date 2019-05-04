@@ -15,7 +15,7 @@ function createStore() {
 }
 
 describe('Levels Module', () => {
-  test('should exist', () => {
+  test('module should exist', () => {
     expect(levels).toBeTruthy();
   });
 

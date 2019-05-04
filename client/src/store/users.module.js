@@ -7,6 +7,9 @@ export default {
   state: {
     currentUser: {},
   },
+  getters: {
+    user: state => state.currentUser,
+  },
   actions: {
     async login({ commit }, name) {
       const { data: user } = await axios.post(usersApi, {
